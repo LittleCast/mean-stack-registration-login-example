@@ -121,6 +121,7 @@ function update(_id, userParam) {
             firstName: userParam.firstName,
             lastName: userParam.lastName,
             username: userParam.username,
+            questions: userParam.questions,
         };
 
         // update password if it was entered

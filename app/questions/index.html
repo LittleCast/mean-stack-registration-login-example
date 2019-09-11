@@ -1,25 +1,25 @@
-﻿<h1>My Account</h1>
+﻿<h1>My Questions</h1>
 <div class="form-container">
-    <form method="post">
-        <div class="form-group">
-            <label for="firstName">First name</label>
-            <input type="text" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last name</label>
-            <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
-        </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" class="form-control" ng-model="vm.user.username" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" class="form-control" ng-model="vm.user.password" />
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary" ng-click="vm.saveUser()">Save</button>
-            <button class="btn btn-danger" ng-click="vm.deleteUser()">Delete</button>
+    <form>
+        <div id="questionContainer" class="form-group">
+            <label>Edit your questions here:</label>
+            <br><br>
+            <div id="loadedQuestions" ng-repeat="(key,question) in vm.user.questions">
+                <div class="questionField">               
+                    <input type="text" id="q{{question.id}}" class="form-control questionTextBox" value="{{question.value}}" ng-blur="vm.updateQuestions(false)"/>
+                    <button class="btn btn-danger questionButton" ng-click="vm.removeQuestion('q'+question.id)">-</button>
+                    <div ng-if="key > 0" class="updownArrows" ng-click="vm.orderUp(key)"><span class="glyphicon glyphicon-chevron-up"></span></div>
+                    <div ng-if="key == 0" class="updownArrowsN" ng-click="vm.orderUp(key)"><span>&emsp;</span></div>
+                    <div ng-if="key < vm.user.questions.length-1" class="updownArrows" ng-click="vm.orderDown(key)"><span class="glyphicon glyphicon-chevron-down"></span></div>
+                    <div ng-if="key == vm.user.questions.length-1" class="updownArrowsN" ng-click="vm.orderDown(key)"><span>&emsp;</span></div>
+                </div>
+            </div>
+            <div class="questionField">
+                <input type="text" id="qnew" class="form-control questionTextBox" placeholder="Insert new question"/>
+                <button class="btn btn-success questionButton" ng-click="vm.addQuestion()">+</button>
+                <div class="updownArrows" ng-click="vm.orderUp(key)"><span>&emsp;</span></div>
+                    <div class="updownArrows" ng-click="vm.orderDown(key)"><span>&emsp;</span></div>
+            </div>
         </div>
     </form>
 </div>
