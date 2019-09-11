@@ -2,7 +2,17 @@
 <div class="form-container">
     <form>
         <div id="questionContainer" class="form-group">
-            <label>Edit your questions here:</label>
+            <label>
+                Edit your questions here:
+                <br>
+                Save is automatic. Focus out an existing field will auto save it;
+                <br>
+                To add new, insert text in the last line and click the "+" green button;
+                <br>
+                To remove a question, just click on the respective "-" red button by its side;
+                <br>
+                Use the arrows to order your questions. It will auto save as well;
+            </label>
             <br><br>
             <div id="loadedQuestions" ng-repeat="(key,question) in vm.user.questions">
                 <div class="questionField">               
